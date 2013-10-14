@@ -81,14 +81,29 @@ $(function() {
         credits: {
             enabled: false
         }
-    };    
+    }; 
+
+    chart = new Highcharts.Chart(chartOptions);
+                chart.showLoading();   
     
     $(document).ready(function() {
-        $.getJSON('http:///213.165.92.187:8080/api/user/1/room/14/quantity=co2?callback=?', function(data) {
+        $.urlParam = function(name){
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results==null){
+                return null;
+            }else{
+                return results[1] || 0;
+            }   
+        }
+        var user = $.urlParam('user');
+        var room = $.urlParam('room');
+        var quantity = $.urlParam('quantity');
+        var period = $.urlParam('period');
+        $.getJSON('http:///213.165.92.187:8080/api/user/'+user+'/room/'+room+'/quantity='+quantity+'?callback=?', function(data) {
      
                 
                 // create the chart
-                chart = new Highcharts.Chart(chartOptions);
+                chart.hideLoading();
                 $.each(data, function(i,point) {
                     point.x = parseInt(point.timestamp);
                     point.y = point.value;
