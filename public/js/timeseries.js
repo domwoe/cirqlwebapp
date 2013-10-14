@@ -47,7 +47,7 @@ $(function() {
                         [1, Highcharts.Color(rgbcolor).setOpacity(0).get('rgba')]
                     ]
                 },
-                lineWidth: 1,
+                lineWidth: 0,
                 marker: {
                     enabled: false
                 },
