@@ -71,7 +71,7 @@ $(function() {
             type: 'datetime'
         },
 
-        series : [{
+        series : [{turboThreshold:0
         }],
 
         legend: {   
@@ -99,7 +99,7 @@ $(function() {
         var room = $.urlParam('room');
         var quantity = $.urlParam('quantity');
         var period = $.urlParam('period');
-        $.getJSON('http:///213.165.92.187:8080/api/user/'+user+'/room/'+room+'/quantity='+quantity+'?callback=?', function(data) {
+        $.getJSON('http:///213.165.92.187:8080/api/user/'+user+'/room/'+room+'/quantity='+quantity+'&period='+period+'?callback=?', function(data) {
      
                 
                 // create the chart
